@@ -17,7 +17,7 @@ private:
     unsigned int height;
 
     int getRealCol(int &row, int &col) {
-
+        //TODO
     }
 
 public:
@@ -73,7 +73,20 @@ public:
     }
 
     int get6Neighbors(int &row, int &col) {
+        int realCol = getRealCol(row, col);
+        int neighbors = 0;
 
+        for(int i = -1; i <= 1; ++i) {
+            for(int j = -2; j <= 2; ++j) {
+                if(i != 0 && j != 0 && matrix[row+i][realCol+j].isValid()) {
+                    try {
+                        neighbors += matrix[row+i][realCol+j].getState();
+                    } catch (std::exception &e) {}
+                }
+            }
+        }
+
+        return neighbors;
     }
 
     int get8Neighbors(int &row, int &col) {
@@ -82,7 +95,9 @@ public:
 
         for(int i = -2; i <= 2; ++i) {
             for(int j = -2; j <= 2; ++j) {
-                if(abs(i) != 2 && abs(j) != 2 && matrix[row+i][realCol+j].isValid()) {
+                if(i != 0 && j != 0 && abs(i) != 2 && abs(j) != 2
+                   && matrix[row+i][realCol+j].isValid()) {
+
                     try {
                         neighbors += matrix[row+i][realCol+j].getState();
                     } catch (std::exception &e) {}
@@ -94,7 +109,7 @@ public:
     }
 
     int get12Neighbors(int &row, int &col) {
-
+        //TODO
     }
 };
 

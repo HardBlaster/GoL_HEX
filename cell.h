@@ -4,15 +4,23 @@
 
 #ifndef GOL_HEX_CELL_H
 #define GOL_HEX_CELL_H
-
+/**
+ * Cell states, which are constant short values.
+ */
 namespace cell_consts {
 
+    /**
+     * There are invalid cells. They exist because of the way how the hexagonal grid is represented in the matrix.
+     */
     const short INVALID = -1;
     const short DEAD = 0;
     const short ALIVE = 1;
 
 }
 
+/**
+ * Representation of GoL cells, and methods operating on them.
+ */
 class Cell {
 
 private:
