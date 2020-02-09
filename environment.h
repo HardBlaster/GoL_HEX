@@ -195,6 +195,8 @@ public:
                 judgeState(i, j);
             }
         }
+
+        generation++;
     }
 
     void setRuleSystem(RuleSystem *rs) {

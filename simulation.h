@@ -11,14 +11,18 @@ class Simulation {
 
 private:
 
-    Environment environment;
+    Environment *environment;
 
-    Simulation(Environment &environment) {
+public:
+
+    Simulation(Environment *environment) {
         this->environment = environment;
     }
 
     void run(int maxGeneration) {
-
+        for (int i = 0; i < maxGeneration; ++i) {
+            environment->nextStep();
+        }
     }
 };
 
