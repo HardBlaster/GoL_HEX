@@ -6,23 +6,18 @@
 #define GOL_HEX_SIMULATION_H
 
 #include "environment.h"
-#include "rule_system.h"
 
 class Simulation {
 
 private:
 
     Environment environment;
-    RuleSystem ruleSystem;
-    unsigned int generation = 0;
 
-
-    Simulation(Environment &environment, RuleSystem &ruleSystem) {
+    Simulation(Environment &environment) {
         this->environment = environment;
-        this->ruleSystem = ruleSystem;
     }
 
-    void run() {
+    void run(int maxGeneration) {
 
     }
 };

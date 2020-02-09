@@ -33,25 +33,52 @@ public:
         this->dead = dead;
     }
 
-    /**
-     * Judges in what state a cell should be in the next generation. It changes the state attribute of the given cell
-     * object.
-     *
-     * @param cell the cell object representing the cell in question.
-     * @param neighbors the number of neighbors the cell has.
-     */
-    void judge(Cell &cell, int &neighbors) {
-        if(stable.find(neighbors) == stable.end()) {
+    ~RuleSystem() = default;
 
-            if(born.find(neighbors) != born.end()) {
-                cell.live();
+    /**
+    * Judges in what state a cell should be in the next generation. It changes the state attribute of the given cell
+    * object.
+    *
+    * @param cell the cell object representing the cell in question.
+    * @param neighbors the number of neighbors the cell has.
+    */
+    char judge(int neighbors) {
+        if (stable.find(neighbors) == stable.end()) {
+
+            if (born.find(neighbors) != born.end()) {
+                return 'b';
             } else {
-                cell.kill();
+                return 'd';
             }
+
+        } else {
+            return 's';
         }
     }
 
-    ~RuleSystem() = default;
+    const std::set<int> &getBorn() const {
+        return born;
+    }
+
+    void setBorn(const std::set<int> &born) {
+        RuleSystem::born = born;
+    }
+
+    const std::set<int> &getStable() const {
+        return stable;
+    }
+
+    void setStable(const std::set<int> &stable) {
+        RuleSystem::stable = stable;
+    }
+
+    const std::set<int> &getDead() const {
+        return dead;
+    }
+
+    void setDead(const std::set<int> &dead) {
+        RuleSystem::dead = dead;
+    }
 
 };
 #endif //GOL_HEX_RULE_SYSTEM_H
